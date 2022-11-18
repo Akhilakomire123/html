@@ -1,12 +1,58 @@
-const obj1={
-    key1:'value1',
-    key2:'value2',
-
+const posts=[{title:'post one',body:'This is post one'},{title:'post two',body:'This is post Two'}];
+function getposts(){
+    setTimeout(()=>{
+        let output='';
+        posts.forEach(post.index)=>{
+            output += `<li>${post.title}</li>`;
+        }
+        document.body.innerHTML=output;
+    },1000);
 }
-const obj2={...obj1,key1:'value100',key2:'value3'}
 
-const arr1=[{a:1},{b:2},{c:3}];
-const arr2=[3,4]
-const obj={d:2}
-const arr3=[...arr1,...arr2,{...obj}]
-console.log(arr3)
+function createpost(post){
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            posts.post(post);
+            const error=false;
+            if(!error){
+                resolve();
+            }
+            else{
+                reject('Error:Something went wrong');
+            }
+
+        },2000)
+    })
+}
+
+function deletepost(){
+    return new Promise((resolve, reject) => {
+        setTimeout(()=>{
+            if(posts.length>0){
+                const lastElement=posts.pop();
+                resolve(lastElement);
+            }
+            else{
+                reject('Array is empty now')
+            }
+        },1000)
+    });
+}
+
+
+createpost({title:'post three',body:'This is post three'}).then(()=>{
+    getposts()
+    deletepost().then((=>{
+        getposts();
+    deletepost().then(()=>{
+        getposts()
+    deletepost().then(()=>{
+        getposts();
+    deletepost().then(()=>{
+        getposts()
+      })
+        })
+     })
+       
+    }))
+}).catch(err=>console.log(err))
